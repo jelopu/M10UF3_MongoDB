@@ -76,6 +76,7 @@ public class FXMLDocumentController implements Initializable {
                             @Override
                             public void run() {
                                 listview_nom.setItems(usuaris);
+                                listview_hobbies.setItems(hobbies);
                             }
                         });
                         i++;
