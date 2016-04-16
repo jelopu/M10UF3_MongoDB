@@ -5,6 +5,10 @@
  */
 package m10uf3_mongodb;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
@@ -29,9 +33,7 @@ public class CargarListaDeHobbies extends Thread{
             
             String tmpNombreSelecionado = FXMLDocumentController.nombresSelecionados;
             
-            
-            
-            
+
             
             try {
                 String tmpCursor;
@@ -61,4 +63,8 @@ public class CargarListaDeHobbies extends Thread{
             
         }else{ System.out.println("FIL NO ATURAT.");}
     }
+    
+    
+    
+    
     }

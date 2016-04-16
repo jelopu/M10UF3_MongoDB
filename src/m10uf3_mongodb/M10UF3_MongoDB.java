@@ -29,6 +29,7 @@ public class M10UF3_MongoDB extends Application {
         stage.setScene(scene);
         stage.show();
         hilo.run();
+        hilo.filtrarUsuarios();
         
         
     }

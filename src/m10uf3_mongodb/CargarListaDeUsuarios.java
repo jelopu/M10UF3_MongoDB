@@ -1,9 +1,12 @@
 package m10uf3_mongodb;
 
+import com.mongodb.Block;
 import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import static com.mongodb.client.model.Filters.eq;
 //import static m10uf3_mongodb.FXMLDocumentController.usuaris;
 import org.bson.Document;
 
@@ -23,7 +26,10 @@ public class CargarListaDeUsuarios extends Thread {
             MongoDatabase db = mongoClient.getDatabase("bigdata");
             MongoCollection<Document> collection = db.getCollection("usuaris");
             MongoCursor<Document> cursor = collection.find().iterator();
+          
             try {
+                
+            
                 String tmpCursor;
                 String[] tmp2Cursor;
                 
@@ -50,5 +56,25 @@ public class CargarListaDeUsuarios extends Thread {
             
         }else{ System.out.println("FIL NO ATURAT.");}
     }
+    
+    public void filtrarUsuarios(){
+        
+            MongoClient mongoClient = new MongoClient(HOST, PORT);
+            MongoDatabase db = mongoClient.getDatabase("bigdata");
+            MongoCollection<Document> collection = db.getCollection("usuaris");
+            MongoCursor<Document> cursor = collection.find().iterator();
+            FindIterable<Document> iterable = db.getCollection("usuaris").find(eq("hobbis", "futbol"));
+            
+            
+            iterable.forEach(new Block<Document>() {
+            @Override
+            public void apply(final Document document) {
+                System.out.println(document);
+            }
+         });
+    
+    }
+    
+    
     }
 

@@ -6,6 +6,7 @@
 package m10uf3_mongodb;
 
 
+import com.mongodb.BasicDBObject;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -49,7 +50,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML 
     private void handleMouseClick(MouseEvent arg0) {
         System.out.println("clicked on " + listview_nom.getSelectionModel().getSelectedItem());
-}
+    }
+    
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
