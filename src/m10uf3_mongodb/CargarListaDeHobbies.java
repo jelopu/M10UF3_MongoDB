@@ -13,9 +13,12 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.sun.org.apache.xpath.internal.SourceTree;
 import org.bson.Document;
 
 import java.util.Collections;
+
+import static java.util.Collections.*;
 
 /**
  *
@@ -24,6 +27,7 @@ import java.util.Collections;
 public class CargarListaDeHobbies extends Thread{
     private final static String HOST = "127.0.0.1";
     private final static int PORT = 27017;
+
 
     @Override
     public void run() {
@@ -48,18 +52,15 @@ public class CargarListaDeHobbies extends Thread{
                 tmpCursor = tmpCursor.replaceAll("}", "");
                 tmpCursor = tmpCursor.replaceAll("\"", "");
                 tmpCursor = tmpCursor.replaceAll("\\s", "");
-
                 tmp2Cursor = tmpCursor.split(",");
-
-                Collections.addAll(FXMLDocumentController.hobbies,tmp2Cursor);
-                // FXMLDocumentController.hobbies.add(tmpCursor);
-
-                
+                addAll(FXMLDocumentController.hobbies,tmp2Cursor);
             } catch (Exception e) {
             } finally{
                 cursor.close();
+                System.out.println("Cursor cerrado");
             }
             mongoClient.close();
+            System.out.println("Base de datos cerrada");
         } catch (Exception e) {
 
         }

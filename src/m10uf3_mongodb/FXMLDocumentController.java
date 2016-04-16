@@ -49,11 +49,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleMouseClick(MouseEvent arg0) {
         try {
+            listview_hobbies.getItems().clear();
             CargarListaDeHobbies fil2 = new CargarListaDeHobbies();
-            System.out.println("clicked on " + listview_nom.getSelectionModel().getSelectedItem());
+            //System.out.println("clicked on " + listview_nom.getSelectionModel().getSelectedItem());
             nombresSelecionados = listview_nom.getSelectionModel().getSelectedItem().toString();
             hobbies.removeAll();
-
             fil2.start();
         } catch (Exception e){
 
