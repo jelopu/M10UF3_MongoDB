@@ -6,7 +6,6 @@
 package m10uf3_mongodb;
 
 
-import com.mongodb.BasicDBObject;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -30,29 +29,38 @@ public class FXMLDocumentController implements Initializable {
     }
     static ObservableList<String> hobbies = FXCollections.observableArrayList();
     static ObservableList<String> usuaris = FXCollections.observableArrayList();
-   // final ListView lv = new ListView();
+    // final ListView lv = new ListView();
     public static String nombresSelecionados;
-    
-    
+
+
     @FXML public ListView listview_nom;
     @FXML public ListView listview_hobbies;
     @FXML public Label label_selecciona;
     @FXML private Label label;
-    
-    
+
+
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
         label.setText("Hello World!");
     }
-    
-    @FXML 
+
+    @FXML
     private void handleMouseClick(MouseEvent arg0) {
-        System.out.println("clicked on " + listview_nom.getSelectionModel().getSelectedItem());
+        try {
+            CargarListaDeHobbies fil2 = new CargarListaDeHobbies();
+            System.out.println("clicked on " + listview_nom.getSelectionModel().getSelectedItem());
+            nombresSelecionados = listview_nom.getSelectionModel().getSelectedItem().toString();
+            hobbies.removeAll();
+
+            fil2.start();
+        } catch (Exception e){
+
+        }
+
+
     }
-    
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

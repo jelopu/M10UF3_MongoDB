@@ -15,6 +15,8 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
+import java.util.Collections;
+
 /**
  *
  * @author mrtwe_000
@@ -22,32 +24,36 @@ import org.bson.Document;
 public class CargarListaDeHobbies extends Thread{
     private final static String HOST = "127.0.0.1";
     private final static int PORT = 27017;
-    
+
     @Override
     public void run() {
         try {
             MongoClient mongoClient = new MongoClient(HOST, PORT);
             MongoDatabase db = mongoClient.getDatabase("bigdata");
             MongoCollection<Document> collection = db.getCollection("usuaris");
-            MongoCursor<Document> cursor = collection.find().iterator();
-            
             String tmpNombreSelecionado = FXMLDocumentController.nombresSelecionados;
-            
+            tmpNombreSelecionado = tmpNombreSelecionado.replaceAll("\\s", "");
 
+            BasicDBObject tmpBuscar= new BasicDBObject();
+            tmpBuscar.put("nom",tmpNombreSelecionado);
+            MongoCursor<Document> cursor = collection.find(tmpBuscar).iterator();
             
             try {
                 String tmpCursor;
                 String[] tmp2Cursor;
-                
-                    while (cursor.hasNext()) {
-                    tmpCursor = cursor.next().toJson();
-                    tmp2Cursor = tmpCursor.split(",");
-                    tmp2Cursor = tmp2Cursor[1].split(":");
-                    tmpCursor = tmp2Cursor[1];
-                    tmpCursor = tmpCursor.replace("\"", "");
-                   
-                    // FXMLDocumentController.hobbies.add(tmpCursor);
-                }
+                tmpCursor = cursor.next().toJson();
+                tmp2Cursor = tmpCursor.split("\\[");
+                tmpCursor = tmp2Cursor[1];
+                tmpCursor = tmpCursor.replaceAll("]", "");
+                tmpCursor = tmpCursor.replaceAll("}", "");
+                tmpCursor = tmpCursor.replaceAll("\"", "");
+                tmpCursor = tmpCursor.replaceAll("\\s", "");
+
+                tmp2Cursor = tmpCursor.split(",");
+
+                Collections.addAll(FXMLDocumentController.hobbies,tmp2Cursor);
+                // FXMLDocumentController.hobbies.add(tmpCursor);
+
                 
             } catch (Exception e) {
             } finally{
