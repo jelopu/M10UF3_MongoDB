@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import m10uf3_mongodb.CargarListaDeUsuarios;
 
 /**
  *
@@ -17,6 +18,8 @@ import javafx.stage.Stage;
  */
 public class M10UF3_MongoDB extends Application {
     
+    FXMLDocumentController bucle = new FXMLDocumentController();
+    CargarListaDeUsuarios hilo = new CargarListaDeUsuarios();
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -25,6 +28,10 @@ public class M10UF3_MongoDB extends Application {
         
         stage.setScene(scene);
         stage.show();
+
+        hilo.run();
+        
+        
     }
 
     /**
@@ -33,5 +40,6 @@ public class M10UF3_MongoDB extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
     
 }
