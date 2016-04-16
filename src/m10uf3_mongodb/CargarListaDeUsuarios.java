@@ -18,6 +18,8 @@ public class CargarListaDeUsuarios extends Thread {
    // FXMLDocumentController controlador = new FXMLDocumentController();
     private final static String HOST = "127.0.0.1";
     private final static int PORT = 27017;
+     String tmpCursor;
+     String[] tmp2Cursor;
 
     @Override
     public void run() {
@@ -29,9 +31,6 @@ public class CargarListaDeUsuarios extends Thread {
           
             try {
                 
-            
-                String tmpCursor;
-                String[] tmp2Cursor;
                 
                     while (cursor.hasNext()) {
                     tmpCursor = cursor.next().toJson();
@@ -40,6 +39,8 @@ public class CargarListaDeUsuarios extends Thread {
                     tmpCursor = tmp2Cursor[1];
                     tmpCursor = tmpCursor.replace("\"", "");
                     FXMLDocumentController.usuaris.add(tmpCursor);
+                    
+                   
                 }
                 
             } catch (Exception e) {
@@ -56,14 +57,17 @@ public class CargarListaDeUsuarios extends Thread {
             
         }else{ System.out.println("FIL NO ATURAT.");}
     }
+   
     
-    public void filtrarUsuarios(){
+    public void filtrarUsuarios(String user){
+        
+           
         
             MongoClient mongoClient = new MongoClient(HOST, PORT);
             MongoDatabase db = mongoClient.getDatabase("bigdata");
             MongoCollection<Document> collection = db.getCollection("usuaris");
             MongoCursor<Document> cursor = collection.find().iterator();
-            FindIterable<Document> iterable = db.getCollection("usuaris").find(eq("hobbis", "futbol"));
+            FindIterable<Document> iterable = db.getCollection("usuaris").find(eq("nom", user));
             
             
             iterable.forEach(new Block<Document>() {
@@ -74,6 +78,9 @@ public class CargarListaDeUsuarios extends Thread {
          });
     
     }
+    
+    
+   
     
     
     }

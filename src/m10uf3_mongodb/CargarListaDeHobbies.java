@@ -6,13 +6,16 @@
 package m10uf3_mongodb;
 
 import com.mongodb.BasicDBObject;
+import com.mongodb.Block;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import static com.mongodb.client.model.Filters.eq;
 import com.sun.org.apache.xpath.internal.SourceTree;
 import org.bson.Document;
 
@@ -69,6 +72,25 @@ public class CargarListaDeHobbies extends Thread{
             System.out.println("FIL ATURAT.");
             
         }else{ System.out.println("FIL NO ATURAT.");}
+    }
+    
+    
+     public void filtrarHobbies(String user){
+        
+            MongoClient mongoClient = new MongoClient(HOST, PORT);
+            MongoDatabase db = mongoClient.getDatabase("bigdata");
+            MongoCollection<Document> collection = db.getCollection("usuaris");
+            MongoCursor<Document> cursor = collection.find().iterator();
+            FindIterable<Document> iterable = db.getCollection("usuaris").find(eq("hobbis", user));
+            
+            
+            iterable.forEach(new Block<Document>() {
+            @Override
+            public void apply(final Document document) {
+                System.out.println(document);
+            }
+         });
+    
     }
     
     

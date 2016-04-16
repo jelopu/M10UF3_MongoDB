@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -37,13 +38,24 @@ public class FXMLDocumentController implements Initializable {
     @FXML public ListView listview_hobbies;
     @FXML public Label label_selecciona;
     @FXML private Label label;
+    @FXML private TextField text_field;
 
 
 
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    private void handleButtonActionUsuaris(ActionEvent event) {
+        String text = text_field.getText().toString();
+        CargarListaDeUsuarios usuarios = new CargarListaDeUsuarios();
+        usuarios.filtrarUsuarios(text);
+        
+    }
+    
+     @FXML
+    private void handleButtonActionHobbies(ActionEvent event) {
+        String text = text_field.getText().toString();
+        CargarListaDeHobbies hobbies = new CargarListaDeHobbies();
+        hobbies.filtrarHobbies(text);
+        
     }
 
     @FXML
