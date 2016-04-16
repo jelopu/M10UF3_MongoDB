@@ -92,7 +92,7 @@ public class CargarListaDeHobbies extends Thread{
                 System.out.println(document);
             }
          });
-    
+        mongoClient.close();
     }
      
     

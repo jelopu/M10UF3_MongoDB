@@ -63,23 +63,37 @@ public class CargarListaDeUsuarios extends Thread {
     public void filtrarUsuarios(String user){
             
              System.out.println("Entra usuaris");
-        
+        try{
+            
+       
             MongoClient mongoClient = new MongoClient(HOST, PORT);
             MongoDatabase db = mongoClient.getDatabase("bigdata");
             MongoCollection<Document> collection = db.getCollection("usuaris");
-            MongoCursor<Document> cursor = collection.find().iterator();
-            FindIterable<Document> iterable = db.getCollection("usuaris").find(eq("nom", user));
+            //MongoCursor<Document> cursor = collection.find().iterator();
+            //FindIterable<Document> iterable = db.getCollection("usuaris").find(eq("nom", user));
+              MongoCursor<Document> cursor = collection.find(eq("nom", user)).iterator();
             
+              try {
+                  while (cursor.hasNext()) {
+                    tmpCursor = cursor.next().toJson();
+                    tmp2Cursor = tmpCursor.split(",");
+                    tmp2Cursor = tmp2Cursor[1].split(":");
+                    tmpCursor = tmp2Cursor[1];
+                    tmpCursor = tmpCursor.replace("\"", "");
+                    FXMLDocumentController.usuaris.add(tmpCursor);
+                
+            } 
+        }catch (Exception e) {
+        }
+    mongoClient.close();
+    }catch (Exception e) {  
+        }
+        if(!this.isInterrupted()){
+            this.interrupt();
+            System.out.println("FIL ATURAT.");
             
-            iterable.forEach(new Block<Document>() {
-            @Override
-            public void apply(final Document document) {
-                System.out.println(document);
-            }
-         });
-    
-    }
-    
+        }else{ System.out.println("FIL NO ATURAT.");}
+ }
     
     public void ordenarAsc(){
 
@@ -96,7 +110,7 @@ public class CargarListaDeUsuarios extends Thread {
                 System.out.println(document);
             }
          });
-    
+        mongoClient.close();
     }
     
     

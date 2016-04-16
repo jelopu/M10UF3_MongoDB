@@ -56,8 +56,11 @@ public class FXMLDocumentController implements Initializable {
     private void handleButtonActionUsuaris(ActionEvent event) {
         String text = text_field.getText().toString();
         CargarListaDeUsuarios usuarios = new CargarListaDeUsuarios();
+        listview_nom.getItems().clear();
+        listview_hobbies.getItems().clear();
+        usuaris.removeAll();
         usuarios.filtrarUsuarios(text);
-        
+       
     }
     
      @FXML
@@ -66,6 +69,17 @@ public class FXMLDocumentController implements Initializable {
         CargarListaDeHobbies hobbies = new CargarListaDeHobbies();
         hobbies.filtrarHobbies(text);
         
+    }
+     @FXML
+    private void handleButtonActionRecargar(ActionEvent event) {
+       try {
+        CargarListaDeUsuarios hilo = new CargarListaDeUsuarios();
+        listview_hobbies.getItems().clear();
+        listview_nom.getItems().clear();
+        hilo.run();
+       } catch (Exception e) {
+           
+       }
     }
     
      @FXML
