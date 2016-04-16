@@ -75,13 +75,15 @@ public class CargarListaDeHobbies extends Thread{
     }
     
     
-     public void filtrarHobbies(String user){
+     public void filtrarHobbies(String text){
+         
+            System.out.println("Entra hobbies");
         
             MongoClient mongoClient = new MongoClient(HOST, PORT);
             MongoDatabase db = mongoClient.getDatabase("bigdata");
             MongoCollection<Document> collection = db.getCollection("usuaris");
             MongoCursor<Document> cursor = collection.find().iterator();
-            FindIterable<Document> iterable = db.getCollection("usuaris").find(eq("hobbis", user));
+            FindIterable<Document> iterable = db.getCollection("usuaris").find(eq("hobbis", text));
             
             
             iterable.forEach(new Block<Document>() {
@@ -92,6 +94,8 @@ public class CargarListaDeHobbies extends Thread{
          });
     
     }
+     
+    
     
     
     

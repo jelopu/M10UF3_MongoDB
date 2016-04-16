@@ -7,6 +7,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Indexes.ascending;
 //import static m10uf3_mongodb.FXMLDocumentController.usuaris;
 import org.bson.Document;
 
@@ -60,14 +61,33 @@ public class CargarListaDeUsuarios extends Thread {
    
     
     public void filtrarUsuarios(String user){
-        
-           
+            
+             System.out.println("Entra usuaris");
         
             MongoClient mongoClient = new MongoClient(HOST, PORT);
             MongoDatabase db = mongoClient.getDatabase("bigdata");
             MongoCollection<Document> collection = db.getCollection("usuaris");
             MongoCursor<Document> cursor = collection.find().iterator();
             FindIterable<Document> iterable = db.getCollection("usuaris").find(eq("nom", user));
+            
+            
+            iterable.forEach(new Block<Document>() {
+            @Override
+            public void apply(final Document document) {
+                System.out.println(document);
+            }
+         });
+    
+    }
+    
+    
+    public void ordenarAsc(){
+
+            MongoClient mongoClient = new MongoClient(HOST, PORT);
+            MongoDatabase db = mongoClient.getDatabase("bigdata");
+            MongoCollection<Document> collection = db.getCollection("usuaris");
+            MongoCursor<Document> cursor = collection.find().iterator();
+            FindIterable<Document> iterable = db.getCollection("usuaris").find().sort(ascending("nom", null));
             
             
             iterable.forEach(new Block<Document>() {

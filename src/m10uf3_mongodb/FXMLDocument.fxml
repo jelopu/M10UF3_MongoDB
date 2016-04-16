@@ -6,15 +6,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="m10uf3_mongodb.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="combo_box" prefHeight="511.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="m10uf3_mongodb.FXMLDocumentController">
     <children>
-        <Button id="btnBuscar" fx:id="button_usuari" layoutX="41.0" layoutY="408.0" onAction="#handleButtonActionUsuaris" text="Buscar usuari" />
+        <Button id="btnBuscar" fx:id="button_usuari" layoutX="41.0" layoutY="408.0" onAction="#handleButtonActionUsuaris" text="Buscar usuari">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></Button>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <ComboBox id="comboBoxOrdenacion" layoutX="443.0" layoutY="14.0" prefWidth="150.0" />
+      <ComboBox id="comboBoxOrdenacion" fx:id="combo" layoutX="443.0" layoutY="14.0" prefWidth="150.0" promptText="Filtrar">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></ComboBox>
       <TextField id="textFieldBuscar" fx:id="text_field" layoutX="41.0" layoutY="372.0" prefHeight="25.0" prefWidth="223.0" />
       <ListView fx:id="listview_nom" layoutX="41.0" layoutY="70.0" onMouseClicked="#handleMouseClick" prefHeight="273.0" prefWidth="223.0" />
       <ListView fx:id="listview_hobbies" layoutX="327.0" layoutY="70.0" prefHeight="273.0" prefWidth="231.0" />
       <TextField layoutX="327.0" layoutY="372.0" prefHeight="25.0" prefWidth="231.0" />
-      <Button fx:id="button_hobby" layoutX="327.0" layoutY="408.0" mnemonicParsing="false" onAction="#handleButtonActionHobbies" text="Buscar hobby" />
+      <Button fx:id="button_hobby" layoutX="327.0" layoutY="408.0" mnemonicParsing="false" onAction="#handleButtonActionHobbies" text="Buscar hobby">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></Button>
+      <Button layoutX="518.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleButtonEditar" text="Editar">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></Button>
     </children>
 </AnchorPane>

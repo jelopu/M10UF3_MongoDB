@@ -6,6 +6,7 @@
 package m10uf3_mongodb;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -14,11 +15,19 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -39,6 +48,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML public Label label_selecciona;
     @FXML private Label label;
     @FXML private TextField text_field;
+    @FXML private ComboBox combo;
 
 
 
@@ -57,6 +67,22 @@ public class FXMLDocumentController implements Initializable {
         hobbies.filtrarHobbies(text);
         
     }
+    
+     @FXML
+    private void handleButtonEditar(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("editar.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("CRUD");
+            stage.setScene(new Scene(root1));  
+            stage.show();
+            
+            //((Node)(event.getSource())).getScene().getWindow().hide();//cerrar la primera ventana
+        
+    }
+    
+    
+    
 
     @FXML
     private void handleMouseClick(MouseEvent arg0) {
@@ -76,11 +102,13 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         try {
             Task task = new Task<Void>() {
 
                 @Override
                 public Void call() throws Exception {
+                    combo.getItems().addAll("Ascendente","Descendente");
                     int i = 0;
                     while (true) {
                         final int finalI = i;
@@ -89,6 +117,7 @@ public class FXMLDocumentController implements Initializable {
                             public void run() {
                                 listview_nom.setItems(usuaris);
                                 listview_hobbies.setItems(hobbies);
+                                   
                             }
                         });
                         i++;
