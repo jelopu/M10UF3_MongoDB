@@ -8,6 +8,7 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Indexes.ascending;
+import javafx.scene.control.Alert;
 //import static m10uf3_mongodb.FXMLDocumentController.usuaris;
 import org.bson.Document;
 
@@ -72,8 +73,8 @@ public class CargarListaDeUsuarios extends Thread {
             //MongoCursor<Document> cursor = collection.find().iterator();
             //FindIterable<Document> iterable = db.getCollection("usuaris").find(eq("nom", user));
               MongoCursor<Document> cursor = collection.find(eq("nom", user)).iterator();
-            
-              try {
+              if (cursor.hasNext() == true ){
+                  try {
                   while (cursor.hasNext()) {
                     tmpCursor = cursor.next().toJson();
                     tmp2Cursor = tmpCursor.split(",");
@@ -82,9 +83,20 @@ public class CargarListaDeUsuarios extends Thread {
                     tmpCursor = tmpCursor.replace("\"", "");
                     FXMLDocumentController.usuaris.add(tmpCursor);
                 
-            } 
-        }catch (Exception e) {
-        }
+                    } 
+                    }catch (Exception e) {
+                    }           
+              }else{
+                  this.interrupt();
+                  start();
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("");
+                alert.setHeaderText(null);
+                alert.setContentText("No hay coincidencias");
+                alert.showAndWait();
+                  
+              }
+              
     mongoClient.close();
     }catch (Exception e) {  
         }
