@@ -25,10 +25,32 @@
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></Button>
-      <Button layoutX="518.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleButtonEditar" text="Editar">
+      <Button layoutX="161.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonEditar" text="New">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></Button>
       <Button fx:id="btnRecargar" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonActionRecargar" text="Recargar tablas" />
+      <TextField layoutX="151.0" layoutY="441.0" prefHeight="25.0" prefWidth="82.0" />
+      <TextField layoutX="443.0" layoutY="441.0" prefHeight="25.0" prefWidth="82.0" />
+      <Button id="btnBuscar" fx:id="button_usuari1" layoutX="41.0" layoutY="441.0" onAction="#handleButtonActionUsuarisBorrar" text="Borrar usuari">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
+      <Button id="btnBuscar" fx:id="button_usuari11" layoutX="151.0" layoutY="409.0" onAction="#handleButtonActionUsuarisEditar" text="Editar usuari">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
+      <Button id="btnBuscar" fx:id="button_usuari12" layoutX="327.0" layoutY="441.0" onAction="#handleButtonActionHobbiesBorrar" text="Borrar hobby">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
+      <Button id="btnBuscar" fx:id="button_usuari121" layoutX="442.0" layoutY="409.0" onAction="#handleButtonActionHobbiesEditar" text="Editar hobby">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
     </children>
 </AnchorPane>
