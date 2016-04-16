@@ -23,11 +23,18 @@ import javafx.scene.control.ListView;
  */
 public class FXMLDocumentController implements Initializable {
 
+    public FXMLDocumentController() {
+    }
+    static ObservableList<String> hobbies = FXCollections.observableArrayList();
     static ObservableList<String> usuaris = FXCollections.observableArrayList();
-    @FXML
-    private Label label;
-    @FXML
-    private ListView listViewIzquierda;
+   // final ListView lv = new ListView();
+
+    @FXML public ListView listview_nom;
+    @FXML public ListView listview_hobbies;
+    @FXML public Label label_selecciona;
+    @FXML private Label label;
+    
+    
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -48,7 +55,7 @@ public class FXMLDocumentController implements Initializable {
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
-                                listViewIzquierda.setItems(usuaris);
+                                listview_nom.setItems(usuaris);
                             }
                         });
                         i++;

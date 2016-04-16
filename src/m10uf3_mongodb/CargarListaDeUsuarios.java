@@ -4,15 +4,19 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import static m10uf3_mongodb.FXMLDocumentController.usuaris;
+//import static m10uf3_mongodb.FXMLDocumentController.usuaris;
 import org.bson.Document;
 
-public class CargarListaDeUsuarios {
+public class CargarListaDeUsuarios extends Thread {
 
-    FXMLDocumentController controlador = new FXMLDocumentController();
+    public CargarListaDeUsuarios() {
+    }
+
+   // FXMLDocumentController controlador = new FXMLDocumentController();
     private final static String HOST = "127.0.0.1";
     private final static int PORT = 27017;
 
+    @Override
     public void run() {
         try {
             MongoClient mongoClient = new MongoClient(HOST, PORT);
@@ -40,5 +44,11 @@ public class CargarListaDeUsuarios {
         } catch (Exception e) {
 
         }
+         if(!this.isInterrupted()){
+            this.interrupt();
+            System.out.println("FIL ATURAT.");
+            
+        }else{ System.out.println("FIL NO ATURAT.");}
     }
-}
+    }
+

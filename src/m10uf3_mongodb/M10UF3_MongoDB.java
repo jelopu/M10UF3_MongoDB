@@ -18,7 +18,7 @@ import m10uf3_mongodb.CargarListaDeUsuarios;
  */
 public class M10UF3_MongoDB extends Application {
     
-    FXMLDocumentController bucle = new FXMLDocumentController();
+   // FXMLDocumentController bucle = new FXMLDocumentController();
     CargarListaDeUsuarios hilo = new CargarListaDeUsuarios();
     @Override
     public void start(Stage stage) throws Exception {
@@ -28,7 +28,6 @@ public class M10UF3_MongoDB extends Application {
         
         stage.setScene(scene);
         stage.show();
-
         hilo.run();
         
         
