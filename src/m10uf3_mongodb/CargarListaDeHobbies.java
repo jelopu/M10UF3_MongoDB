@@ -26,6 +26,13 @@ public class CargarListaDeHobbies extends Thread{
             MongoDatabase db = mongoClient.getDatabase("bigdata");
             MongoCollection<Document> collection = db.getCollection("usuaris");
             MongoCursor<Document> cursor = collection.find().iterator();
+            
+            String tmpNombreSelecionado = FXMLDocumentController.nombresSelecionados;
+            
+            
+            
+            
+            
             try {
                 String tmpCursor;
                 String[] tmp2Cursor;

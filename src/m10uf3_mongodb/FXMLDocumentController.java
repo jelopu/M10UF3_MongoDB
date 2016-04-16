@@ -5,6 +5,7 @@
  */
 package m10uf3_mongodb;
 
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -16,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 
 /**
  *
@@ -43,6 +45,11 @@ public class FXMLDocumentController implements Initializable {
         System.out.println("You clicked me!");
         label.setText("Hello World!");
     }
+    
+    @FXML 
+    private void handleMouseClick(MouseEvent arg0) {
+        System.out.println("clicked on " + listview_nom.getSelectionModel().getSelectedItem());
+}
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
