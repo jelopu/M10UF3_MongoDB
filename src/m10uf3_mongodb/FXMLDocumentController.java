@@ -28,7 +28,9 @@ public class FXMLDocumentController implements Initializable {
     static ObservableList<String> hobbies = FXCollections.observableArrayList();
     static ObservableList<String> usuaris = FXCollections.observableArrayList();
    // final ListView lv = new ListView();
-
+    public static String nombresSelecionados;
+    
+    
     @FXML public ListView listview_nom;
     @FXML public ListView listview_hobbies;
     @FXML public Label label_selecciona;
