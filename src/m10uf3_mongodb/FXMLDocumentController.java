@@ -95,8 +95,7 @@ public class FXMLDocumentController implements Initializable {
         
     }
     
-    
-    
+
 
     @FXML
     private void handleMouseClick(MouseEvent arg0) {

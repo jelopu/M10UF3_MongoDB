@@ -5,7 +5,6 @@
  */
 package m10uf3_mongodb;
 
-import java.awt.*;
 import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,14 +21,31 @@ import javafx.stage.Stage;
  */
 public class EditarController implements Initializable {
 
+  
+    public EditarController() {
+    }
+    
     @FXML public Button btnGuardar;
     @FXML public Button btnCancelar;
+    @FXML public TextField field_usuari;
+    @FXML public TextField field_hobbie1;
+    @FXML public TextField field_hobbie2;
+    @FXML public TextField field_hobbie3;
+    
 
     /**
      * Initializes the controller class.
      */
     @FXML
     public void handleButtonActionGuardar () {
+        String usuari = field_usuari.getText().toString();
+        String hobbie1 = field_hobbie1.getText().toString();
+        String hobbie2 = field_hobbie2.getText().toString();
+        String hobbie3 = field_hobbie3.getText().toString();
+        System.out.println(usuari);
+        System.out.println(hobbie1);
+        AñadirDocumento doc = new AñadirDocumento();
+        doc.run(usuari, hobbie1, hobbie2, hobbie3);
 
     }
     @FXML
