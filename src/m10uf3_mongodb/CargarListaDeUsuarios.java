@@ -32,8 +32,7 @@ public class CargarListaDeUsuarios extends Thread {
             MongoCursor<Document> cursor = collection.find().iterator();
           
             try {
-                
-                
+
                     while (cursor.hasNext()) {
                     tmpCursor = cursor.next().toJson();
                     tmp2Cursor = tmpCursor.split(",");

@@ -46,6 +46,13 @@ public class EditarController implements Initializable {
         System.out.println(hobbie1);
         AñadirDocumento doc = new AñadirDocumento();
         doc.run(usuari, hobbie1, hobbie2, hobbie3);
+        Stage stage = (Stage) btnCancelar.getScene().getWindow();
+        stage.close();
+        CargarListaDeUsuarios recargar = new CargarListaDeUsuarios();
+        FXMLDocumentController.hobbies.removeAll();
+        FXMLDocumentController.usuaris.removeAll();
+        recargar.run();
+
 
     }
     @FXML
