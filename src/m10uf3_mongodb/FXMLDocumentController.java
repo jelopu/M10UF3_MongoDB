@@ -48,6 +48,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML public Label label_selecciona;
     @FXML private Label label;
     @FXML private TextField text_field;
+    @FXML private TextField text_field_hobb;
     @FXML private ComboBox combo;
 
 
@@ -65,9 +66,13 @@ public class FXMLDocumentController implements Initializable {
     
      @FXML
     private void handleButtonActionHobbies(ActionEvent event) {
-        String text = text_field.getText().toString();
-        CargarListaDeHobbies hobbies = new CargarListaDeHobbies();
-        hobbies.filtrarHobbies(text);
+         String text = text_field_hobb.getText().toString();
+         CargarListaDeHobbies hobby = new CargarListaDeHobbies();
+         listview_nom.getItems().clear();
+         listview_hobbies.getItems().clear();
+         usuaris.removeAll();
+         hobbies.removeAll();
+         hobby.filtrarHobbies(text);
         
     }
      @FXML

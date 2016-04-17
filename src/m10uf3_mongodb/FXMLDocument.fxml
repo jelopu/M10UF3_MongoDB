@@ -20,7 +20,7 @@
       <TextField id="textFieldBuscar" fx:id="text_field" layoutX="41.0" layoutY="372.0" prefHeight="25.0" prefWidth="223.0" />
       <ListView fx:id="listview_nom" layoutX="41.0" layoutY="70.0" onMouseClicked="#handleMouseClick" prefHeight="273.0" prefWidth="223.0" />
       <ListView fx:id="listview_hobbies" layoutX="327.0" layoutY="70.0" prefHeight="273.0" prefWidth="231.0" />
-      <TextField layoutX="327.0" layoutY="372.0" prefHeight="25.0" prefWidth="231.0" />
+      <TextField id="hobbiestext" fx:id="text_field_hobb" layoutX="327.0" layoutY="372.0" prefHeight="25.0" prefWidth="231.0" />
       <Button fx:id="button_hobby" layoutX="327.0" layoutY="408.0" mnemonicParsing="false" onAction="#handleButtonActionHobbies" text="Buscar hobby">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
@@ -35,6 +35,6 @@
       <Button layoutX="432.0" layoutY="408.0" mnemonicParsing="false" text="Editar hobby" />
       <Button layoutX="139.0" layoutY="408.0" mnemonicParsing="false" text="Editar usuari" />
       <TextField layoutX="139.0" layoutY="441.0" prefHeight="25.0" prefWidth="82.0" />
-      <TextField layoutX="433.0" layoutY="441.0" prefHeight="25.0" prefWidth="82.0" />
+      <TextField  layoutX="433.0" layoutY="441.0" prefHeight="25.0" prefWidth="82.0" />
     </children>
 </AnchorPane>
