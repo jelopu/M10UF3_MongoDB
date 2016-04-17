@@ -16,6 +16,5 @@
       <TextField fx:id="field_hobbie3" layoutX="420.0" layoutY="57.0" />
       <Button fx:id="btnGuardar" layoutX="171.0" layoutY="105.0" mnemonicParsing="false" onAction="#handleButtonActionGuardar" text="Guardar" />
       <Button fx:id="btnCancelar" layoutX="308.0" layoutY="105.0" mnemonicParsing="false" onAction="#handleButtonActionCancelar" text="Cancelar" />
-      <Label layoutX="308.0" layoutY="27.0" text="Label" />
    </children>
 </AnchorPane>
