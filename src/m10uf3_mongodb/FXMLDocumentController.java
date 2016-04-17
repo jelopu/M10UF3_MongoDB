@@ -86,7 +86,7 @@ public class FXMLDocumentController implements Initializable {
            
        }
     }
-    
+    //AQUI
      @FXML
     private void handleButtonEditar(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("editar.fxml"));
@@ -95,11 +95,24 @@ public class FXMLDocumentController implements Initializable {
             stage.setTitle("CRUD");
             stage.setScene(new Scene(root1));  
             stage.show();
-            
+            //asda
             //((Node)(event.getSource())).getScene().getWindow().hide();//cerrar la primera ventana
         
     }
-    
+
+    @FXML
+    private void handleButtonNuevoHobby (ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("añadir.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Añadir Hobby");
+        stage.setScene(new Scene(root1));
+        stage.show();
+
+        //((Node)(event.getSource())).getScene().getWindow().hide();//cerrar la primera ventana
+
+    }
+
 
 
     @FXML
