@@ -81,10 +81,28 @@ public class FXMLDocumentController implements Initializable {
         CargarListaDeUsuarios hilo = new CargarListaDeUsuarios();
         listview_hobbies.getItems().clear();
         listview_nom.getItems().clear();
+           usuaris.removeAll();
+           hobbies.removeAll();
         hilo.run();
        } catch (Exception e) {
            
        }
+    }
+    @FXML
+    private void handleButtonActionBorrarUsuario(ActionEvent event) {
+        try {
+           BorrarUsuario delete = new BorrarUsuario();
+           delete.run(nombresSelecionados);
+            usuaris.removeAll();
+            hobbies.removeAll();
+            listview_hobbies.getItems().clear();
+            listview_nom.getItems().clear();
+            CargarListaDeUsuarios recargar = new CargarListaDeUsuarios();
+            recargar.run();
+
+        } catch (Exception e) {
+
+        }
     }
     //AQUI
      @FXML
