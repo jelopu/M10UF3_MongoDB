@@ -7,6 +7,7 @@ package m10uf3_mongodb;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -51,6 +52,9 @@ public class AñadirController implements Initializable {
         CargarListaDeUsuarios recargar = new CargarListaDeUsuarios();
         FXMLDocumentController.hobbies.removeAll();
         FXMLDocumentController.usuaris.removeAll();
+        FXMLDocumentController f1 = new FXMLDocumentController();
+        f1.listview_hobbies.getItems().clear();
+        f1.listview_nom.getItems().clear();
         recargar.run();
 
 
@@ -63,9 +67,7 @@ public class AñadirController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         field_usuari.setText(FXMLDocumentController.nombresSelecionados);
-        //FXMLDocumentController.nombresSelecionados
     }
 
 }

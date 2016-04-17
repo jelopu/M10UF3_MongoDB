@@ -20,10 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -126,6 +123,8 @@ public class FXMLDocumentController implements Initializable {
         stage.setTitle("Añadir Hobby");
         stage.setScene(new Scene(root1));
         stage.show();
+
+
 
         //((Node)(event.getSource())).getScene().getWindow().hide();//cerrar la primera ventana
 
